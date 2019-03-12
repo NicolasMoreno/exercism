@@ -11,7 +11,7 @@ describe('Converter', () => {
         expect(converter.convert([1, 0, 1], 2, 10)).toEqual([5])
     })
 
-    xit('single decimal to binary', () => {
+    it('single decimal to binary', () => {
         expect(converter.convert([5], 10, 2)).toEqual([1, 0, 1])
     })
 
