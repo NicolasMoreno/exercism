@@ -12,12 +12,14 @@ class Character:
         self.intelligence = self.rollCharacterAbilityDice()
         self.wisdom = self.rollCharacterAbilityDice()
         self.charisma = self.rollCharacterAbilityDice()
+        self.hitpoints = self.setHitpoints()
 
     def rollCharacterAbilityDice(self):
-        rolledDice = [self.rollDice(), self.rollDice(), self.rollDice(), self.rollDice()].sort()
-        print(rolledDice)
+        rolledDice = []
+        for x in range(0,3):
+            rolledDice.append(self.rollDice())
+        rolledDice.sort()
         points = sum(rolledDice[1:4])
-        # points = reduce(lambda x,y: x+y, rolledDice[1:4])
         return points
 
     def rollDice(self):
@@ -26,6 +28,9 @@ class Character:
     def ability(self):
         return self.strength
 
+    def setHitpoints(self):
+        return 10 + modifier(self.constitution)
+
 
 def modifier(baseConstitution):
-    return math.floor((baseConstitution - 10));
+    return math.floor((baseConstitution - 10)/2)
